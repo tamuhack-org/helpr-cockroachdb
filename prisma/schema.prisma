@@ -1,6 +1,6 @@
 // schema.prisma
 datasource db {
-  provider = "postgresql"
+  provider = "cockroachdb"
   url      = env("DATABASE_PRISMA_URL") // uses connection pooling
 }
 
@@ -118,7 +118,7 @@ model EventRoles {
 }
 
 model VerificationToken {
-  id         Int      @id @default(autoincrement())
+  id         Int      @id @default(sequence())
   identifier String
   token      String   @unique
   expires    DateTime
